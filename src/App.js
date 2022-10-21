@@ -5,11 +5,11 @@ import Footer from "./components/Footer.js";
 
 function App() {
   return (
-    <ReactFragment>
+    <>
       <Header />
       <Game />
       <Footer />
-    </ReactFragment>
+    </>
   );
 }
 
