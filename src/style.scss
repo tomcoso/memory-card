@@ -5,4 +5,24 @@
   font-family: monospace;
 }
 
-$baseColor: rgb(33, 88, 72)
+$baseColor: rgb(33, 88, 72);
+
+@keyframes newLevel {
+  0% {opacity: 0}
+  10% {opacity: 1}
+  90% {opacity: 1}
+  100% {opacity: 0}
+}
+#new-level {
+  animation: newLevel 1s linear;
+}
+
+@keyframes levelTitle {
+  0% {right: -100%}
+  25% {right: -30%}
+  75% {right: 10%}
+  100% {right: 100%}
+}
+#level-title {
+  animation: levelTitle 1s linear;
+}

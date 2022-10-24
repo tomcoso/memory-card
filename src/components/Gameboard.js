@@ -18,37 +18,63 @@ import tomBaker from "../assets/tom-baker.jpg";
 const Wrapper = styled.section`
   width: 100%;
   display: grid;
-  grid: min-content / repeat(auto-fill, 250px);
+  grid: min-content / repeat(auto-fit, 180px);
   gap: 20px;
   place-content: center;
 `;
 
 const Gameboard = (props) => {
-  const [clicked, setClicked] = useState([]);
-
-  const cardsGen = (() => {
+  const getCards = () => {
     const pics = [
-      { url: hartnell, name: "William Hartnell" },
-      { url: eccleston, name: "Christopher Eccleston" },
-      { url: colinBaker, name: "Colin Baker" },
-      { url: tennant, name: "David Tennant" },
-      { url: pertwee, name: "David Pertwee" },
-      { url: smith, name: "Matt Smith" },
-      { url: troughton, name: "Patrick Troughton" },
-      { url: mcgann, name: "Paul McGann" },
-      { url: capaldi, name: "Peter Capaldi" },
-      { url: davidson, name: "Peter Davidson" },
-      { url: mccoy, name: "Silvester MacCoy" },
-      { url: tomBaker, name: "Tom Baker" },
+      { url: hartnell, name: "William Hartnell", color: "#8e8e98" },
+      { url: eccleston, name: "Christopher Eccleston", color: "#ffdf01" },
+      { url: colinBaker, name: "Colin Baker", color: "#012e58" },
+      { url: tennant, name: "David Tennant", color: "#66cc9a" },
+      { url: pertwee, name: "David Pertwee", color: "#012e58" },
+      { url: smith, name: "Matt Smith", color: "#f3abb6" },
+      { url: troughton, name: "Patrick Troughton", color: "#f3abb6" },
+      { url: mcgann, name: "Paul McGann", color: "#00a1c7" },
+      { url: capaldi, name: "Peter Capaldi", color: "#ff6634" },
+      { url: davidson, name: "Peter Davidson", color: "#66cc9a" },
+      { url: mccoy, name: "Silvester MacCoy", color: "#ff5814" },
+      { url: tomBaker, name: "Tom Baker", color: "#00a1c7" },
     ];
     let res = [];
     for (let i = 0; i < 12; i++) {
-      const item = { id: uniqid(), name: pics[i].name, url: pics[i].url };
+      const item = {
+        id: uniqid(),
+        name: pics[i].name,
+        url: pics[i].url,
+        color: pics[i].color,
+      };
       res.push(item);
     }
     return res;
-  })();
-  const cards = useState(cardsGen)[0];
+  };
+
+  const getLevels = () => {
+    const levels = [];
+    let i = 4;
+    while (i <= 12) {
+      let cardsCopy = cards.slice();
+      let j = i;
+      const lvl = [];
+      while (j > 0) {
+        lvl.push(
+          ...cardsCopy.splice([parseInt(Math.random() * cardsCopy.length)], 1)
+        );
+        j--;
+      }
+      levels.push(lvl);
+      i += 2;
+    }
+    return levels;
+  };
+
+  const cards = useState(getCards())[0];
+  const levels = useState(getLevels())[0];
+  const [clicked, setClicked] = useState([]);
+  const [shuffledCards, setShuffledCards] = useState([]);
 
   const onSelection = (e) => {
     const clickedCard = e.nativeEvent.path[0].id
@@ -69,20 +95,22 @@ const Gameboard = (props) => {
     shuffle();
   };
 
-  const [shuffledCards, setShuffledCards] = useState([]);
-
   const shuffle = () => {
     const shuffledCards = [];
-    const cardsCopy = cards.slice();
-    let i = 12;
+    const level = levels[props.level].slice();
+    let i = level.length;
     while (i > 0) {
-      shuffledCards.push(...cardsCopy.splice(parseInt(Math.random() * i), 1));
+      shuffledCards.push(...level.splice(parseInt(Math.random() * i), 1));
       i--;
     }
     setShuffledCards(shuffledCards);
   };
 
-  useEffect(shuffle, [cards, clicked]);
+  useEffect(shuffle, [levels, clicked, props.level]);
+
+  useEffect(() => {
+    setClicked([]);
+  }, [props.level]);
 
   return (
     <Wrapper>

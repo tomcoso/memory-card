@@ -6,6 +6,10 @@ const Wrap = styled.div`
   border: 2px solid #000;
   border-radius: 10px;
   overflow: hidden;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px ${(props) => props.color};
+  }
 `;
 
 const Img = styled.img`
@@ -15,11 +19,26 @@ const Img = styled.img`
   object-position: top;
 `;
 
+const Title = styled.p`
+  margin-top: -3px;
+  border-top: 2px solid #000;
+  padding: 3px 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  height: 3rem;
+  background-color: ${(props) => props.color};
+`;
+
 const Card = (props) => {
   return (
-    <Wrap id={props.info.id} onClick={props.onSelection}>
+    <Wrap
+      id={props.info.id}
+      onClick={props.onSelection}
+      color={props.info.color}
+    >
       <Img src={props.info.url} alt={props.info.name} />
-      <p>{props.info.name} </p>
+      <Title color={props.info.color}>{props.info.name} </Title>
     </Wrap>
   );
 };
