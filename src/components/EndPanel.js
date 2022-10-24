@@ -1,12 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ReactDOM from "react-dom";
 
 const root = document.getElementById("root");
 
+const anim = keyframes`
+  0% {box-shadow: 0px 0px 15px -5px #fffce0}
+  50% {box-shadow: 0px 0px 15px 5px #4cb5f4}
+  100% {box-shadow: 0px 0px 15px -5px #fffce0}
+`;
+
 const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
   left: 0;
@@ -19,27 +25,30 @@ const Overlay = styled.div`
 
 const MidPanel = styled.div`
   padding: 40px;
-  background-color: #fff;
+  background-color: #0a0a11;
   display: flex;
   gap: 10px;
   flex-direction: column;
-  box-shadow: 0px 5px 10px 0px #000;
   border-radius: 5px;
+  animation: ${anim} 2s linear infinite;
 `;
 
 const MainMsg = styled.p`
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   padding: 10px;
+  color: #fffce0;
 `;
 const Button = styled.button`
   padding: 5px 10px;
-  font-size: 1.3rem;
-  background-color: #fff;
-  border: 2px solid #000;
+  font-size: 1.8rem;
+  background-color: #0a0a11;
+  border: 2px solid #fffce0;
+  color: #fffce0;
+  cursor: grab;
 
   &:active {
-    box-shadow: inset 0px 0px 5px 0px #000;
+    box-shadow: inset 0px 0px 5px 0px #fffce0;
   }
 `;
 

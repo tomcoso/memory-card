@@ -1,11 +1,18 @@
+@font-face {
+  font-family: 'assiduous';
+  src: url('./assets/AssiduousSmallcaps-lLqX.ttf') format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: 'assiduous', monospace;
+  font-size: 18px;
 }
-
-$baseColor: rgb(33, 88, 72);
+#root {
+  overflow-x: hidden;
+}
 
 @keyframes newLevel {
   0% {opacity: 0}
@@ -19,10 +26,15 @@ $baseColor: rgb(33, 88, 72);
 
 @keyframes levelTitle {
   0% {right: -100%}
-  25% {right: -30%}
-  75% {right: 10%}
+  25% {right: -5%}
+  75% {right: 5%}
   100% {right: 100%}
 }
 #level-title {
   animation: levelTitle 1s linear;
+}
+@media (hover : none) {
+  .card {
+    box-shadow: none !important;
+  }
 }

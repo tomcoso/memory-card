@@ -7,10 +7,11 @@ import Transition from "./Transition";
 
 const Main = styled.main`
   width: 100vw;
-  min-height: 84vh;
+  min-height: 87vh;
   height: min-content;
-  padding: 30px;
-  background-color: #eee;
+  padding: 30px 2vw;
+  background-color: #0d1d25;
+  box-shadow: inset 0px 0px 5px 0px #000;
 `;
 
 const Game = (props) => {

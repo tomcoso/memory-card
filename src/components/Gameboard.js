@@ -17,10 +17,10 @@ import tomBaker from "../assets/tom-baker.jpg";
 
 const Wrapper = styled.section`
   width: 100%;
-  display: grid;
-  grid: min-content / repeat(auto-fit, 180px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  place-content: center;
 `;
 
 const Gameboard = (props) => {
@@ -72,7 +72,7 @@ const Gameboard = (props) => {
   };
 
   const cards = useState(getCards())[0];
-  const levels = useState(getLevels())[0];
+  const [levels, setLevels] = useState(getLevels());
   const [clicked, setClicked] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
 
@@ -85,6 +85,7 @@ const Gameboard = (props) => {
       if (clickedCard === card) {
         setClicked([]);
         props.handleEnd();
+        setLevels(getLevels());
         return;
       }
     }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const Overlay = styled.div`
   position: fixed;
@@ -8,7 +8,7 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -16,9 +16,10 @@ const Overlay = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: bold;
   position: relative;
+  color: #fffce0;
 `;
 
 const Transition = (props) => {
@@ -28,7 +29,7 @@ const Transition = (props) => {
     if (props.level === 0) return;
     setPanel(
       <Overlay id="new-level">
-        <Title id="level-title">Level {props.level + 1}</Title>
+        <Title id="level-title">level {props.level + 1}</Title>
       </Overlay>
     );
 

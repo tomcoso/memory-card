@@ -4,15 +4,16 @@ import styled from "styled-components";
 const HeaderElem = styled.header`
   width: 100vw;
   height: 8vh;
-  background-color: #ccc;
-  display: grid;
-  grid: 1fr / 1fr repeat(2, min-content);
-  gap: 15px;
+  background-color: #0a0a11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
+  color: #fffce0;
 `;
 
 const Header = (props) => {
