@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Memory Card Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an assignment from [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-memory-card)
 
-## Available Scripts
+### [Live Demo](https://tomcoso.github.io/memory-card/)
 
-In the project directory, you can run:
+## Technologies used
 
-### `npm start`
+- node
+- react
+- create-react-app
+- sass
+- styled-components
+- react-icons
+- uniqid
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Planning
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Following is the original planning I did before starting the project, I leave it here for documentation's sake. A few things ended up different, of course!
 
-### `npm test`
+Feel free to ignore.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is the initial planning, I am was thinking of using Fragments to unclog the DOM and of using Portals to display a counter on the header, that updates based on the Game component. In the end I used portals to create overlays instead.
 
-### `npm run build`
+I will also look into styled-components to see if its worth it to learn and use in this project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `<Header>` Will have the title, a restart button portal, and a section to hold the score counter portals.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `<Game>` Will contain all the game logic, along with the portals for restart and the scores. It will be composed with :
 
-### `npm run eject`
+  - `<Gameboard>`
+    - `<Card>` component for each card (12)
+    - Shuffle() method
+  - `<Counter>` counting logic
+    - A portal element to display the score in `<Header>`
+  - `Restart` method with a portal button on `<Header>`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `<Footer>` Will contain links to my gh and portfolio.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Some game logic sketches :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```jsx
+# In <Gameboard props={endGame, addScore}>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cards = useState([all cards])
+clicked = useSTate([])
 
-## Learn More
+After click on card {
+	if (clicked card in clicked?) {
+		setClicked( [] )
+		--> To <Game> endGame()
+	}
+	else {
+		setClicked( clicked + clicked card )
+		--> To <Game> addScore()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+		if clicked.length === 12 {
+			--> To <Game> endGame()
+		}
+	}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+	shuffleCards()
+}
+```
 
-### Code Splitting
+```jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# In <Game>
 
-### Analyzing the Bundle Size
+score = useState(0)
+highScore = useState(0)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+endGame = () => {
 
-### Making a Progressive Web App
+	if score === 12 {
+		display win panel
+	}
+	else {
+		display losing panel
+	}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+	setScore( 0 )
+}
 
-### Advanced Configuration
+addScore = () => {
+	setScore( score + 1 )
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+	if score > highScore {
+		setHighScore( score )
+	}
+}
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
