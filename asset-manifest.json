@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/memory-card/static/css/main.0e36d1c2.css",
+    "main.js": "/memory-card/static/js/main.81e9b6c8.js",
+    "static/media/silvester-mccoy.jpg": "/memory-card/static/media/silvester-mccoy.60adaef5374274fadab9.jpg",
+    "static/media/paul-mcgann.jpg": "/memory-card/static/media/paul-mcgann.74fadda7de278493eba3.jpg",
+    "static/media/tom-baker.jpg": "/memory-card/static/media/tom-baker.9c22556b779dfec3293d.jpg",
+    "static/media/christopher-eccleston.jpg": "/memory-card/static/media/christopher-eccleston.ebfe3056dd9246e88e31.jpg",
+    "static/media/colin-baker.jpg": "/memory-card/static/media/colin-baker.ea92a8e7e5288db68e39.jpg",
+    "static/media/jon-pertwee.jpg": "/memory-card/static/media/jon-pertwee.9b1422830618d6db38b2.jpg",
+    "static/media/david-tennant.jpg": "/memory-card/static/media/david-tennant.9963e0226b5b3fccfa39.jpg",
+    "static/media/peter-davidson.jpg": "/memory-card/static/media/peter-davidson.a1dd9e019463e5439899.jpg",
+    "static/media/peter-capaldi.jpg": "/memory-card/static/media/peter-capaldi.c3122286343e02a3f010.jpg",
+    "static/media/patrick-troughton.jpg": "/memory-card/static/media/patrick-troughton.400cfe18e81714d8cb56.jpg",
+    "static/media/william-hartnell.jpg": "/memory-card/static/media/william-hartnell.6946b744665c83acaccf.jpg",
+    "static/media/matt-smith.jpg": "/memory-card/static/media/matt-smith.6aebe6bb3da32dc2df3c.jpg",
+    "static/media/AssiduousSmallcaps-lLqX.ttf": "/memory-card/static/media/AssiduousSmallcaps-lLqX.922ba128dcc8156b0ce0.ttf",
+    "index.html": "/memory-card/index.html",
+    "main.0e36d1c2.css.map": "/memory-card/static/css/main.0e36d1c2.css.map",
+    "main.81e9b6c8.js.map": "/memory-card/static/js/main.81e9b6c8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e36d1c2.css",
+    "static/js/main.81e9b6c8.js"
+  ]
+}
