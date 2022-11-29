@@ -1,8 +1,8 @@
 # Memory Card Game
 
-This project is an assignment from [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-memory-card)
-
 ### [Live Demo](https://tomcoso.github.io/memory-card/)
+
+This project is a memory cards game with a Doctor Who theme, click on each doctor once to get to the next level.
 
 ## Technologies used
 
